@@ -1,0 +1,788 @@
+@import "https://use.fontawesome.com/releases/v5.13.0/css/all.css";
+@font-face{
+	src: url(./font/digital-7.ttf);
+	font-family: LED;
+}
+body{
+	font-family: Arial;
+	background-color: #f6f9fc;
+}
+.main{
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 800px;
+	/*border: 1px solid black;*/
+	padding: 20px 20px 0px 20px;
+}
+.top{
+	background-color: #ffffff;
+	height: 710px;
+	box-shadow: 0px 0px 15px 15px #edebee;
+	border-radius: 2px;
+	padding: 30px 0px 20px 0px;
+}
+.top .home{
+	margin: 0px 0px 0px 0px;
+	position: absolute;
+	width: 500px;
+	display: block;
+	transition: 0.5s;
+	opacity: 1;
+	/*border: 1px solid blue;*/
+}
+.room{
+	display: none;
+	opacity: 0;
+	transition: 0.5s;
+	margin: -20px 0px 0px 0px;
+}
+.devices{
+	margin: -20px 0px 0px 0px;
+	position: absolute;
+	width: 500px;
+	height: 700px;
+	display: none;
+	transition: 0.5s;
+	opacity: 0;
+	/*border: 1px solid black;*/
+}
+.top .home .head{
+/*	border:1px solid red;*/
+	font-size:40px;
+	font-weight: bold;
+	margin-left: 30px;
+	margin-right: 30px;
+}
+.top .home .head .expand{
+	float: right;
+	font-size: 25px;
+	color: #a7a5a6;
+	padding: 10px 5px;
+}
+.top .home .info {
+	border-radius: 5px;
+	height: 100px;
+	margin: 20px 30px 0px 30px;
+	background-image: linear-gradient(to right,#86469c,#563996);
+	padding: 50px 20px 0px 40px;
+}
+.top .room .head{
+/*	border:1px solid red;*/
+	font-size:40px;
+	font-weight: bold;
+	margin-left: 30px;
+	margin-right: 30px;
+	height: 150px;
+
+}
+.top .room .head .dieuhuong{
+	position: relative;
+	width: 10%;
+/*	border: 1px solid black;*/
+	cursor: pointer;
+	float: left;
+
+}
+.top .devices .head{
+	/*border:1px solid red;*/
+	font-size:40px;
+	font-weight: bold;
+	margin-left: 30px;
+	margin-right: 30px;
+	height: 80px;
+
+}
+.top .devices .head .dieuhuong{
+	position: relative;
+	width: 10%;
+/*	border: 1px solid black;*/
+	cursor: pointer;
+	float: left;
+	color: #aaaaac;
+}
+.top .devices .head .name{
+	position: relative;
+	text-align: center;
+	padding-top: 2px;
+	margin-top: 10px;
+	font-size: 24px; 
+	/*border: 1px solid red;*/
+	float: left;
+	width: 350px;
+}
+.top .devices .head .expand{
+	margin-top: 5px;
+	width: 40px;
+	border-radius: 20px;
+	height: 40px;
+	float: left;
+	position: relative;
+	background-color: #f4f1f8;
+	padding-top: 0;
+}
+.devices .head .expand i{
+	font-size: 25px;
+	/*border: 1px solid blue;*/
+	color: #a9a8ae;
+	margin: 8px 0px 0px 8px;
+	position: absolute;
+
+}
+
+.devices .sel_devices{
+
+	/*border: 1px solid red;*/
+	height: 100px;
+	width: 500px;
+	overflow-x: to right;
+	overflow-y: hidden;
+	padding-top: 10px;
+	white-space: nowrap;
+	padding-left: 0px;
+	scroll-behavior: none;
+	float: right;
+}
+.sel_devices::-webkit-scrollbar { 
+    display: none; 
+}
+.sel_devices .adjusted{
+	display: inline-block;	
+	width: 100px;
+	height: auto;
+	border-radius: 5px;
+	border: 1px dotted red;
+	margin: 0px 5px 0px 5px;
+	cursor: pointer;
+	/*float: left;*/
+	opacity: 0;
+}
+.adjusted#adjust_left{
+	width: 100px;
+	margin:0px 0px 0px -100px;
+	transition: ease-in-out 0.5s;
+}
+.adjusted#ss_adjust_left{
+	width: 100px;
+	margin:0px 0px 0px -100px;
+	transition: ease-in-out 0.5s;
+}
+.sel_devices .device_pane{
+	display: inline-block;
+	width: 100px;
+	height: 90px;
+	border-radius: 5px;
+	/*border: 1px dotted red;*/
+	margin: 0px 5px 0px 5px;
+	cursor: pointer;
+	transition: 1s;
+	opacity: 0.5;
+	box-shadow: 0px 0px 15px 10px #f4f4f4;
+	/*float: left;*/
+	color: #a9a9a9;
+}
+.device_pane i{
+	margin-left: 35px;
+	margin-top: 20px;
+	
+	font-size: 30px;
+}
+.device_pane p{
+	margin-top: 13px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.devices .device_detail{
+	margin: 140px 20px 0px 20px;
+	height: 500px;
+	/*border: 1px solid red;*/
+	opacity: 0;
+	transition: 0.5s;
+}
+.device_detail .namedevice{
+	/*border: 1px solid blue;*/
+	height: 40px;
+	width: 100%;
+}
+.namedevice .name{
+	font-weight: bold;
+	float: left;
+	padding: 2px 0px 0px 20px;
+	font-size: 26px;
+	color: #51504e;
+}
+.namedevice #status{
+	float: right;
+	width: 70px;
+	height: 23px;
+	border-radius: 15px;
+	background-image: linear-gradient(to right,#84469b,#563996); 
+	color: white;
+	text-align: center;
+	padding-top: 7px;
+	cursor: pointer;
+	font-weight: bold;
+	transition: 0.8s;
+	box-shadow: 0px 0px 15px 10px #eeebf6;
+}
+.namedevice #ss_status{
+	float: right;
+	width: 70px;
+	height: 23px;
+	border-radius: 15px;
+	background-image: none; 
+	color: black;
+	text-align: center;
+	padding-top: 7px;
+	cursor: pointer;
+	font-weight: bold;
+	transition: 0.8s;
+	box-shadow: 0px 0px 15px 10px #eeebf6;
+}
+.device_detail .device_image{
+	margin-left: auto;
+	margin-right: auto;
+	width: 200px;
+	height: 200px;
+	/*border: 1px solid green;*/
+	margin-top: 30px;
+	padding: 20px 20px 0px 20px;
+}
+.device_image .top_lamp{
+	/*box-shadow: 5px 10px 8px 10px green;*/
+	border-bottom: 100px solid green;
+	border-left: 30px solid transparent;
+	border-right: 30px solid transparent;
+	height: 0;
+	width: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	opacity: 0.8;
+	box-shadow: 0px 40px 22px -20px green;
+	
+}
+.device_image .body_lamp{
+	margin-left: auto;
+	margin-right: auto;
+	width: 5px;
+	height: 60px;
+	background-color: #77787c;
+}
+.device_image .foot_lamp{
+	margin-left: auto;
+	margin-right: auto;
+	width: 50px;
+	height: 5px;
+	background-color: #77787c;
+}
+.device_detail .modes{
+	/*border: 1px solid blue;*/
+	height: 40px;
+	width: 100%;
+	float: left;
+}
+.modes p{
+	font-weight: bold;
+	padding: 0px 0px 0px 10px;
+	margin-top: 10px;
+	width: 45px;
+	/*border:1px solid purple;*/
+	float: left;
+	font-size: 17px;
+	color: #5e5e60;
+}
+.modes .mode_sel{
+	padding: 5px 10px 0px 0px;
+	float: right;
+	width: 380px;
+	position: relative;
+	/*border: 1px solid red;*/
+}
+.mode_sel .mode{
+	margin-left: 30px; 
+	float: right;
+	width: 90px;
+	border-radius: 15px;
+	/*font-weight: bold;*/
+	padding-top: 5px;
+	height: 22px;
+	text-align: center;
+/*	border: 1px solid red;*/
+	background-image: none;
+	color:#afb0b2 ;
+	box-shadow: 0px 0px 10px 5px #eeebf6;
+	transition: 0.5s;
+	cursor: pointer;
+
+}
+
+
+.device_detail .intensity {
+	/*border: 1px solid black;*/
+	width: 100%;
+	height: 30px;
+	margin-top: 60px;
+}
+.intensity p{
+	margin-top: 10px;
+	padding-left: 10px;
+	font-weight: bold;
+	float: left;
+	font-size: 17px;
+	color: #5e5e60;
+}
+.intensity input{
+	margin-top: 10px;
+	margin-left: 80px;
+	width: 290px;
+	cursor: pointer;
+}
+
+.device_detail .shades {
+	/*border: 1px solid black;*/
+	width: 100%;
+	height: 30px;
+	margin-top: 30px;
+}
+.shades p{
+	margin-top: 10px;
+	padding-left: 10px;
+	font-weight: bold;
+	float: left;
+	font-size: 17px;
+	color: #5e5e60;
+}
+.shades .color_pane{
+	margin-top: 0px;
+	margin-left: 150px;
+	width: 290px;
+	/*border: 1px solid red;*/
+	cursor: pointer;
+}
+.color_pane .color{
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	margin: 5px 15px 15px 10px;
+	float: left;
+}
+.top > .room > .head > .logo{
+	margin-left: 163px;
+	margin-top: 0;
+	width: 100px;
+	height: 90px;
+	border-radius: 100px;
+	font-size: 25px;
+	color: #a7a5a6;
+	background-color: #f4f1f8;
+	padding: 10px 5px;
+	position: relative;
+}
+.top .room .head .name{
+	position: relative;
+	text-align: center;
+	padding-top: 10px;
+	font-size: 25px;
+}
+.top > .room > .head > .logo img{
+	width: 100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.info .icon {
+	border-right: 2px solid #7d54a3;
+	width: 47%;
+	text-align: center;
+	float: left;
+}
+.info .text{
+
+	width: 45%;
+	text-align: left;
+	float: right;
+}
+.info .text h3{
+	color: white;
+	margin-top: 10px;
+	font-size: 18px;
+	padding-bottom: 0;
+	margin-bottom: 2px;
+	font-weight: normal;
+}
+.info .text p{
+	color: #b6a7d0;
+	margin-top: 0;
+	padding-top: 0;
+	font-size: 13px;
+}
+.top .home .applicances{
+	margin-top: 20px;
+	/*border: 1px solid green;*/
+	height: 485px;
+	overflow: auto;
+	padding: 0px 10px 0px 15px;
+}
+.top .home .applicances::-webkit-scrollbar { 
+    display: none; 
+}
+.top .home .applicances .applicance{
+	width: 44.5%;
+	margin: 10px 0px 5px 15px;
+	height: 160px;
+	box-shadow: 0px 0px 15px 10px #f8f8f8;
+	border-radius: 5px;
+	float: left;
+	text-align: center;
+	cursor: pointer;
+}
+
+
+.top .room .applicances{
+	margin-top: 20px;
+	/*border: 1px solid green;*/
+	height: 555px;
+	overflow: auto;
+	padding: 0px 10px 0px 15px;
+}
+.top .room .applicances::-webkit-scrollbar { 
+    display: none; 
+}
+.top .room .applicances .applicance{
+	width: 44.5%;
+	margin: 10px 0px 5px 15px;
+	height: 160px;
+	box-shadow: 0px 0px 15px 10px #f8f8f8;
+	border-radius: 5px;
+	float: left;
+	text-align: center;
+	cursor: pointer;
+}
+
+
+.applicance img{
+	width: 110px;
+	height: 100px;
+	padding-bottom: 0;
+}
+.applicance p{
+	margin-top: 0; 
+	padding-top: 0px;
+	color: #969696;
+}
+.applicance h3{
+	margin-top: 0; 
+	padding-top: 5px;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	font-size: 20px;
+}
+.menu{
+	background-color: #ffffff;
+	height: 70px;
+	box-shadow: 0px 0px 15px 5px #edebee;
+	border-radius: 2px;
+	margin-top: -5px;
+
+}
+.menu > div {
+	padding-top: 18px;
+	font-size: 16px;
+	text-align: center;
+	width: calc(100% / 5 - 0px);
+	color: black;
+	/*border: 1px solid black;*/
+	float: left;
+	cursor: pointer;
+	font-weight: bold;
+}
+.menu >div.active{
+	padding-top: 10px;
+	color: purple;
+
+}
+.menu > div > i.fa{
+	font-size: 30px;
+	font-weight: none;
+	display:block;
+  	margin-bottom:5px;
+}
+.menu > div.active > i.fa{
+	font-size: 30px;
+	font-weight: inherit;
+	display:block;
+  	margin-bottom:5px;
+}
+.popup{
+	position: absolute;
+	text-align: center;
+	width: 400px;
+	height:35px;
+	border-radius: 25px;
+	background-image: linear-gradient(to right,#84469b,#563996);
+	margin-left: 50px;
+	margin-top: 10px;
+	opacity: 0;
+	color: white;
+	font-size: 17px;
+	padding-top: 15px;
+	transition: 0.5s;
+}
+.popup .close {
+	/*position: absolute;*/
+	float: right;
+
+}
+.popup .close i{
+	position: absolute;
+	display: block;
+	float: right;
+	/*border: 1px solid red;*/
+	margin-left: -30px;
+	cursor: pointer;
+}
+
+.body_sensor{
+	width: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 150px;
+	border-radius: 30px;
+	background-color: #e2e2e2;
+	border: 5px solid white;
+	box-shadow: 0px 0px 20px 3px black;
+	transition: 0.5s;
+}
+.sensor_border{
+	width: 100px;
+	height: 85px;
+	margin-top: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #ffffff;
+	border-radius: 5px;
+	padding-top: 15px;
+	opacity: 1;
+}
+#display_temp{
+	opacity: 0;
+	transition: 0.5s;
+}
+#display_temp p{
+	position: absolute;
+	margin-top: -35px;
+	margin-left: 79px;
+	font-weight: bold;
+}
+.sensor_border span{
+	font-family: 'LED';
+	font-size: 70px;
+	padding-top: 30px;
+	margin-left: 5px;
+	color: black;
+	font-weight: normal;
+}
+
+
+.sensor_setting{
+	transition: 0.5s;
+	opacity: 0;
+	overflow: auto;
+	height: 200px;
+	float: left;
+	font-weight: bold;
+	width: 100%;
+}
+.set_temp{
+
+	width: 45%;
+	float: left;
+	padding: 0px 10px 10px 10px;
+}
+.set_threshold_temp{
+
+	width: 45%;
+	float:left;
+	padding: 0px 10px 10px 10px;
+}
+
+
+.ss_appliances {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  margin: 30px auto;
+  margin-left: 15px;
+}
+
+.ss_appliances > .ss_appliance {
+  position: relative;
+  height: 170px;
+  width: calc(100% / 2 - 20px);
+  margin: 10px 10px 10px 10px;
+}
+.ss_appliance span {
+  position: absolute;
+
+}
+.ss_appliance span::before, .appliance span::after {
+  text-transform: uppercase;
+  font-size: 12px;
+  position: absolute;
+  left: 0;
+}
+.ss_appliance span::before {
+  content: attr(data-o);
+  opacity: 0;
+}
+.ss_appliance span::after {
+  content: attr(data-c);
+}
+.ss_appliance strong {
+  margin: 70px 0 10px;
+  display: block;
+  font-size: 18px;
+}
+.ss_appliance label {
+  position: absolute;
+  width: 70%;
+  height: 71%;
+  cursor: pointer;
+  padding: 20px;
+  box-shadow: 1px 0 10px 10px rgba(0, 0, 0, 0.03);
+  border-radius: 30px;
+}
+
+.ss_appliance label::before {
+  border-radius: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: white;
+  content: "";
+}
+.ss_appliance input:checked + label::before {
+    content: "";
+    background: linear-gradient(to right,#84469b,#563996);
+}
+.ss_appliance label * {
+  position: relative;
+  transition: 200ms;
+}
+.ss_appliance input:checked + label * {
+    color: white;
+}
+.ss_appliance label small {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff574e;
+    border-radius: 10px;
+    top: 30px;
+    right: 20px;
+    transition: 200ms;
+}
+.ss_appliance label small::after, .ss_appliance label small::before {
+    content: "";
+    background-color: black;
+}
+.ss_appliance input:checked + label small {
+    width: 30px;
+    height: 15px;
+    background-color: #3976f6;
+    color: yellow;
+}
+.ss_appliance label .fa{
+  width: 23px;
+  height: 23px;
+  position: absolute;
+  display: block;
+  padding: 5px 0px 0px 5px;
+  color: #84469b;/*//,#563996)*/
+  font-size: 22px;
+ }
+
+
+
+.ss_appliance input {
+  display: none;
+}
+
+
+.ss_appliance input:checked + label .fa {
+  color: white;
+}
+
+.ss_appliance input:checked + label i.fa{
+  background-color: transparent;
+}
+
+.ss_appliance input:checked + label small {
+  width: 30px;
+  height: 15px;
+  background-color: #8449ff;
+}
+.ss_appliance input:checked + label small::before {
+  width: 13px;
+  height: 13px;
+  background-color: white;
+  display: block;
+  border-radius: 13px;
+  top: 1px;
+  position: absolute;
+}
+.ss_appliance input:checked + label span::before {
+  opacity: 1;
+}
+.ss_appliance input:checked + label span::after {
+  opacity: 0;
+}
+
+.warning_panel{
+	position: absolute;
+	width: 300px;
+	height: 100px;
+	background-color: white;
+	border-top: 30px solid red;
+	box-shadow: 0px 0px 10px 3px #e65b80; 
+	margin-top: -600px;
+	margin-left: 100px;
+	display: none;
+	border-radius: 20px;
+	animation-name: warning;
+	animation-duration: 0.8s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes warning{
+	0%{ opacity: 0; }
+	50%{ opacity: 1; }
+	100%{ opacity: 0; }
+}
+.warning_panel .header{
+	width: 20%;
+	float: left;
+
+}
+.warning_panel .header .fa{
+	color: red;
+	padding: 25px 0px 0px 20px;
+	font-size: 35px;
+}
+.warning_panel .content{
+	float: left;
+	width: 75%;
+	/*border: 1px solid blue;*/
+	font-family: 'Itim';
+	height: 100px;
+	font-size: 22px;
+	padding-top: 28px;
+	padding-left: 10px
+}
